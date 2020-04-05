@@ -5,6 +5,5 @@ public class TestClass {
         System.out.println("Feature test func in feature test class");
     }
 
-
-    public sadistic
+    Hallo! this one should not be even looked at
 }
