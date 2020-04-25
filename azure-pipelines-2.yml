@@ -35,4 +35,4 @@ steps:
       script: |
         git checkout $(Build.SourceBranchName)
         git remote add heroku https://heroku:$(HAT)@git.heroku.com/masterdisaster-tax-calculator.git
-        git push heroku HEAD:master 2> $null
+        git push -q heroku HEAD:master
