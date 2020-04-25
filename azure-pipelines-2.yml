@@ -33,6 +33,6 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        git checkout $(Build.SourceBranchName)
-        git remote add heroku https://heroku:$(HAT)@git.heroku.com/masterdisaster-tax-calculator.git
+        git checkout $(Build.SourceBranchName) 2>&1
+        git remote add heroku https://heroku:$(HAT)@git.heroku.com/masterdisaster-tax-calculator.git 2>&1
         git push heroku $(Build.SourceBranchName) 2>&1
