@@ -29,10 +29,9 @@ steps:
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
 
-  - task: PowerShell@2
+  - task: CmdLine@2
     inputs:
-      targetType: 'inline'
       script: |
-        git checkout $(Build.SourceBranchName) 2> $null
-        git remote add heroku https://heroku:$(HAT)@git.heroku.com/masterdisaster-tax-calculator.git 2> $null
-        git push heroku $(Build.SourceBranchName) 2> $null
+        git checkout $(Build.SourceBranchName)
+        git remote add heroku https://heroku:$(HAT)@git.heroku.com/masterdisaster-tax-calculator.git
+        git push heroku $(Build.SourceBranchName)
