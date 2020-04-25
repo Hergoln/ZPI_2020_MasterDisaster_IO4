@@ -32,4 +32,5 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        HEROKU_API_KEY=${HAT} mvn heroku:deploy
+        HEROKU_API_KEY=$(HAT) 
+        mvn heroku:deploy
