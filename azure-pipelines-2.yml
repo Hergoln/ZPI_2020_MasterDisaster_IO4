@@ -18,6 +18,12 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+  - task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'sonarcloud-test'
+      organization: 'hergoln-test-key'
+      scannerMode: 'Other'
+
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'
@@ -28,3 +34,7 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
+
+  - task: SonarCloudPublish@1
+    inputs:
+      pollingTimeoutSec: '300'
