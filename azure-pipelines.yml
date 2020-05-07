@@ -19,8 +19,8 @@ pool:
 steps:
   - task: SonarCloudPrepare@1
     inputs:
-      SonarCloud: 'SonarCloud'
-      organization: 'masterdisaster'
+      SonarCloud: 'sonarcloud-test'
+      organization: 'hergoln-test-key'
       scannerMode: 'Other'
 
   - task: Maven@3
