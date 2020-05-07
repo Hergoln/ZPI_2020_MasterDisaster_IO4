@@ -11,7 +11,6 @@ trigger:
       - feature*
       - hotfix
 
-
 pool:
   vmImage: 'windows-latest'
 
