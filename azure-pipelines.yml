@@ -1,3 +1,4 @@
+
 # Maven
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
@@ -7,6 +8,7 @@ trigger:
   batch: true
   branches:
     include:
+      - release
       - develop
       - feature*
       - hotfix
@@ -17,8 +19,8 @@ pool:
 steps:
   - task: SonarCloudPrepare@1
     inputs:
-      SonarCloud: 'sonarcloud-test'
-      organization: 'hergoln-test-key'
+      SonarCloud: 'SonarCloud'
+      organization: 'masterdisaster'
       scannerMode: 'Other'
 
   - task: Maven@3
@@ -35,8 +37,13 @@ steps:
       sqMavenPluginVersionChoice: 'latest'
       goals: 'package'
 
-# according to https://sonarcloud.io/documentation/analysis/scan/sonarscanner-for-azure-devops/
-# this one works only for release pipelines on AzureDevOps apparently :/
   - task: SonarCloudPublish@1
     inputs:
       pollingTimeoutSec: '300'
+
+  - task: CmdLine@2
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release'))
+    inputs:
+      script: |
+        set HEROKU_API_KEY=$(HAT)
+        mvn heroku:deploy
