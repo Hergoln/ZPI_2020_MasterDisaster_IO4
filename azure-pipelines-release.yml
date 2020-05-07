@@ -8,11 +8,7 @@ trigger:
   branches:
     include:
       - release
-    exclude:
-      - develop
-      - master
-      - feature*
-      - hotfix
+
 
 pool:
   vmImage: 'windows-latest'
