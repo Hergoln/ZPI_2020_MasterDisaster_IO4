@@ -28,9 +28,3 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
-
-  - task: CmdLine@2
-    inputs:
-      script: |
-        set HEROKU_API_KEY=$(HAT)
-        mvn heroku:deploy
