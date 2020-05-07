@@ -7,12 +7,12 @@ trigger:
   batch: true
   branches:
     include:
-      - develop
       - release
+    exclude:
+      - develop
+      - master
       - feature*
       - hotfix
-    exclude:
-      - master
 
 pool:
   vmImage: 'windows-latest'

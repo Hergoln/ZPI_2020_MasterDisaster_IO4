@@ -8,10 +8,10 @@ trigger:
   branches:
     include:
       - develop
-      - release
       - feature*
       - hotfix
     exclude:
+      - release
       - master
 
 pool:
