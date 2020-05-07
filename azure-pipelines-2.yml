@@ -38,6 +38,8 @@ steps:
       sqMavenPluginVersionChoice: 'latest'
       goals: 'package'
 
+# according to https://sonarcloud.io/documentation/analysis/scan/sonarscanner-for-azure-devops/
+# this one works only for release pipelines on AzureDevOps apparently :/
   - task: SonarCloudPublish@1
     inputs:
       pollingTimeoutSec: '300'
